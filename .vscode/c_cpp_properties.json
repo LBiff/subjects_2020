@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/gcc/v8.1/mingw64/include",
+                "D:/gcc/v8.1/mingw64/lib"
+
+
+
+
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "D://gcc//v8.1//mingw64//bin//gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "clang-x64",
+            "compilerArgs": [
+                "-m64",
+                "${file}",
+                "-o",
+                "${fileDirname}/out/${fileBasenameNoExtension}.exe",
+                "-g",
+                "-Wall",
+                "-static-libgcc",
+                "-std=c++17"
+            ]
+        }
+    ],
+    "version": 4
+}
