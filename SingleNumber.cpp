@@ -23,9 +23,27 @@ int singleNumber(vector<int>& nums)
 // 3 * (a + b + c) - (a + a + a + b + b + b + c) = 2 c
 //要求时间O(N),空间O(1)
 //Thinking
+
+// ones ^= num：记录至目前元素num，二进制某位出现 11 次（当某位出现 33 次时有 ones = 1ones=1 ，与 twos = 1twos=1 共同表示“出现 33 次”）；
+// twos |= ones & num：记录至目前元素num，二进制某位出现 22 次 （当某位出现 22 次时，twos = 1twos=1 且 ones = 0ones=0 ）；
+// threes = ones & twos：记录至目前元素num，二进制某位出现 33 次（即当 onesones 和 twostwos 对应位同时为 11 时 three = 1three=1 ）。
+// one &= ~threes, two &= ~threes：将 onesones, twostwos 中出现了 33 次的对应位清零，实现 “不考虑进位的三进制加法” 。
+
+//Thinking
 int singleNumber_2(vector<int>& nums) 
 {
-
+    int ones = 0;
+    int twos = 0;
+    int threes = 0;
+    for (int num : nums)
+    {
+        twos |= ones & num; // 二进制某位出现1次时twos = 0，出现2, 3次时twos = 1；
+        ones ^= num;  // 二进制某位出现2次时ones = 0，出现1, 3次时ones = 1；
+        threes = ones & twos; // 二进制某位出现3次时（即twos = ones = 1时）three = 1，其余即出现1, 2次时three = 0；
+        ones &= ~threes; // 将二进制下出现3次的位置零，实现`三进制下不考虑进位的加法`；
+        twos &= ~threes;
+    }
+    return ones;
 }
 
 

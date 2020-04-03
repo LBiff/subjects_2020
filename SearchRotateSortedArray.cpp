@@ -81,8 +81,9 @@ int search(vector<int>& nums, int target)
     {
         mid = (l + r) / 2;
         if(nums[mid] == target){return mid;};
-        if(l == r){
-return -1;
+        if(l == r)
+        {
+            return -1;
         };
         nums[mid] < nums[l] ? (nums[mid] <= target && target <= nums[r] ?  l = mid + 1 : r = mid - 1) 
                             : (nums[mid] > nums[r] ? (nums[l] <= target && target <= nums[mid] ? r = mid - 1 : l = mid + 1)
