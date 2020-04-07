@@ -29,7 +29,6 @@ public:
          _map_data_size.insert(pair<T, int>(d, 1));
     }
 
-
     //是否在一个集合
     bool isSameSet(T d_1, T d_2)
     {
