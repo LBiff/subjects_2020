@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <queue>
 #include <algorithm>
+#include <stack>
 using namespace std;
 
 struct Node
@@ -76,10 +77,84 @@ vector<string> topKFrequent(vector<string>& words, int k)
 };
 
 
+
+//map找频率，k小根堆堆顶做门槛
+class Solution 
+{
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) 
+    {
+        vector<int> ret;
+        if(nums.empty() || k < 1)
+        {
+            return ret;
+        };
+
+        //先统计频率
+        unordered_map<int,int> map; //value, count
+        for(auto i : nums)
+        {
+            auto iter = map.find(i);
+            if(iter != map.end())
+            {
+                iter->second++;
+            }
+            else
+            {
+                map.insert({i, 1});
+            }
+        };
+
+        //小根堆维护
+        priority_queue<pair<int,int>,vector<pair<int,int>>,Comparator> heap; //count, value
+        for(auto iter = map.begin(); iter != map.end(); iter++)
+        {
+            if(heap.size() < k)
+            {
+                heap.push(pair(iter-> second, iter->first));
+            }
+            else
+            {
+                if(iter->second > heap.top().first)
+                {
+                    heap.pop();
+                    heap.push(pair(iter-> second, iter->first));
+                }
+            }
+        };
+
+        auto ht = heap.top();
+        stack<int> s;
+        while(!heap.empty())
+        {
+            s.push(heap.top().second);
+            heap.pop();
+        };
+
+        while(!s.empty())
+        {
+            ret.push_back(s.top());
+            s.pop();
+        };
+
+        return ret;
+    };
+private:
+    class Comparator
+    {
+    public:
+        bool operator()(const pair<int,int>& p1, const pair<int,int>& p2)
+        {
+            return p1.first > p2.first ? true : false;
+        };
+    };
+};
+
+
 int main()
 {
-    vector<string> s{"plpaboutit","jnoqzdute","sfvkdqf","mjc","nkpllqzjzp","foqqenbey",
-    "ssnanizsav","nkpllqzjzp","sfvkdqf","isnjmy","pnqsz","hhqpvvt","fvvdtpnzx","jkqonvenhx","cyxwlef","hhqpvvt","fvvdtpnzx","plpaboutit","sfvkdqf","mjc","fvvdtpnzx","bwumsj","foqqenbey","isnjmy","nkpllqzjzp","hhqpvvt","foqqenbey","fvvdtpnzx","bwumsj","hhqpvvt","fvvdtpnzx","jkqonvenhx","jnoqzdute","foqqenbey","jnoqzdute","foqqenbey","hhqpvvt","ssnanizsav","mjc","foqqenbey","bwumsj","ssnanizsav","fvvdtpnzx","nkpllqzjzp","jkqonvenhx","hhqpvvt","mjc","isnjmy","bwumsj","pnqsz","hhqpvvt","nkpllqzjzp","jnoqzdute","pnqsz","nkpllqzjzp","jnoqzdute","foqqenbey","nkpllqzjzp","hhqpvvt","fvvdtpnzx","plpaboutit","jnoqzdute","sfvkdqf","fvvdtpnzx","jkqonvenhx","jnoqzdute","nkpllqzjzp","jnoqzdute","fvvdtpnzx","jkqonvenhx","hhqpvvt","isnjmy","jkqonvenhx","ssnanizsav","jnoqzdute","jkqonvenhx","fvvdtpnzx","hhqpvvt","bwumsj","nkpllqzjzp","bwumsj","jkqonvenhx","jnoqzdute","pnqsz","foqqenbey","sfvkdqf","sfvkdqf"};
-    auto a = topKFrequent(s, 2);
+    vector<int> vi{5,3,1,1,1,3,73,1};
+    Solution s;
+    auto a = s.topKFrequent(vi, 2);
     return 0;
 }

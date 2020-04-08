@@ -34,6 +34,58 @@ bool isPalindrome(int x)
     return true;
 };
 
+//判断一个单链表是否回文
+//1.全部入数组判断
+//双指针，快2慢1，快指针压到null,慢指针偶数压到后中，奇数压中间，从快指针后入栈，栈反序与比较
+#include <stack>
+using namespace std;
+struct ListNode 
+{
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(nullptr) {}
+};
+
+bool isPalindrome(ListNode* head) 
+{
+    if(!head || !(head->next)) //0或1个
+    {
+        return true;
+    };
+    if(!(head->next->next)) //只有两个节点
+    {
+        return head->val == head->next->val;
+    }
+    
+    ListNode* low  = head -> next; //有效
+    ListNode* fast = low ->next; //有效
+    while(fast)
+    {
+        low = low->next;
+        fast = fast->next ? fast->next->next : nullptr;
+    };
+
+    //奇数low压中中间节点
+    //偶数个low压中中下一位置
+    stack<ListNode*> s;
+    while(low)
+    {
+        s.push(low);
+        low = low->next;
+    };
+    ListNode* new_node = head;
+    while(!s.empty())
+    {
+        if(new_node->val != s.top()->val)
+        {
+            return false;
+        };
+        new_node = new_node->next;
+        s.pop();
+    };
+    return true;
+}
+
 int main()
 {
     int x = 1001;

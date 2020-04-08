@@ -168,7 +168,6 @@ using namespace std;
 //                ret_2 = min(nums2[v2_idx], nums1[v1_idx]);
 //             }
 //         }
-
 //         return (ret_1 +ret_2)/2.0;
 //     }
 // };
@@ -194,7 +193,6 @@ public:
         {
             return false;
         };
-
         //淘汰制查询[]
         int start_1 = 0;  //下一个要考察的字符串
         int start_2 = 0;
@@ -250,13 +248,79 @@ public:
 
 };
 
+// int main()
+// {
+//     Solution_2 s;
+//     vector<int> a{1,2,4,6,8};
+//     vector<int> b{1,3,4,7,9};
+//     int k_1 = 0;
+//     int k_2 = 0;;
+//     s.FindK_1_2thLess(a,b,3,k_1, k_2);
+//     return 0;
+// };
+
+
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
+{
+
+    //偶数删除前中位的前所有，奇数删除中位前
+    int need_del = (nums1.size() + nums2.size()) % 2 == 0 ?
+                    (nums1.size() + nums2.size()) / 2 - 1 : (nums1.size() + nums2.size()) / 2;
+    int del = 0;
+    int l_1 = 0;
+    int r_1 = nums1.size() - 1;
+    int l_2 = 0;
+    int r_2 = nums2.size() - 1 ;
+    while(r_1 < nums1.size() && r_2 < nums2.size() && del < need_del)
+    {
+        int mid_1 = l_1 + (r_1 - l_1) / 2;
+        int mid_2 = l_2 +(r_2 - l_2) / 2;
+        if(nums1[mid_1] < nums2[mid_2]) //删除1区间前半部分
+        {
+            int del_tmp = del;
+            del_tmp += mid_1 - l_1 + 1;
+            if(del_tmp > need_del) //可能会删过
+            {
+                break;
+            };
+            del = del_tmp;
+            l_1 = mid_1 + 1;
+        }
+        else if(nums1[mid_1] > nums2[mid_2])
+        {
+            int del_tmp = del;
+            del_tmp += mid_2 - l_2 + 1;
+            if(del_tmp > need_del) //可能会删过
+            {
+                break;
+            };
+            del = del_tmp;
+            l_2 = mid_2 + 1;
+        }
+        else //两个都可以删了
+        {
+            int del_tmp = del;
+            del_tmp += mid_1 - l_1 + 1;
+            del_tmp += mid_2 - l_2 + 1;
+            if(del_tmp > need_del) //可能会删过
+            {
+                break;
+            };
+            del = del_tmp;
+            l_1 = mid_1 + 1;
+            l_2 = mid_2 + 1;
+        }
+    };
+
+    return 0;
+};
+
 int main()
 {
-    Solution_2 s;
-    vector<int> a{1,2,4,6,8};
-    vector<int> b{1,3,4,7,9};
-    int k_1 = 0;
-    int k_2 = 0;;
-    s.FindK_1_2thLess(a,b,3,k_1, k_2);
+    vector<int>nums1{1, 3,4,6,7};
+    vector<int>nums2{2,4,5,6};
+    auto ret = findMedianSortedArrays(nums1,nums2);
     return 0;
+
 }
+

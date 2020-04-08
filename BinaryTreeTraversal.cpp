@@ -84,10 +84,10 @@ void PreOrder(const BinaryNode* root)
 //head的遍历过程
 void MidOrder(const BinaryNode* root)
 {
-    stack<BinaryNode*> stack;
     if(root)
     {
-        BinaryNode* head = const_cast<BinaryNode*>(root);
+        stack<BinaryNode*> stack;
+        BinaryNode* head = const_cast<BinaryNode*>(root); //不需要先压root
         while(head || !stack.empty())
         {
             //整体流程： 先把中--左-左..所有的左节点入栈，弹出顺序是左中
