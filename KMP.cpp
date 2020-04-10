@@ -6,45 +6,40 @@
 using namespace std;
 
 //建立next数组
-vector<int> GenerateNext(string s_2)
+//获取待匹配字符串的next数组
+vector<int> GetNext(string s_2)
 {
     vector<int> next(s_2.size());
     if(s_2.empty())
     {
         return next;
-    };
-
-    if(s_2.size() == 1)
-    {
-        next = {-1};
     }
-    else
+    else if(s_2.size() == 1)
     {
-        //强行规定
-        next[0] = -1;
-        next[1] = 0;
+        return {-1};
+    };
+    //强行规定
+    next[0] = -1;
+    next[1] = 0;
 
-        size_t idx = 2;
-        int pre_next = 0;
-        while(idx < s_2.size())
+    int pre = 0;
+    int idx = 2;
+    while(idx < s_2.size())
+    {
+        if(s_2[idx - 1] == s_2[pre]) //前相等直接加
         {
-            if(s_2[idx - 1] == s_2[pre_next])
-            {
-                next[idx++] = ++pre_next;
-            }
-            else if(pre_next > 0)
-            {
-                pre_next = next[pre_next];
-            }
-            else
-            {
-               next[idx++] = 0;
-            }
+            next[idx++] = ++pre;
+        }
+        else if(pre > 0) //不等循环查找
+        {
+            pre = next[pre];
+        }
+        else //越界0
+        {
+            next[idx++] = 0;
         }
     };
-
     return next;
-
 };
 
 
@@ -58,16 +53,16 @@ int KMP(string s_1, string s_2)
 
     //创建s_2的最长前后缀匹配长度数组 next
     //next数组的生成
-    vector<int> next = GenerateNext(s_2);
+    vector<int> next = GetNext(s_2);
    
     //字符串加速匹配
     size_t str1_idx = 0;
     size_t str2_idx = 0;
     while(str1_idx < s_1.size() && str2_idx < s_2.size())
     {
-        if(s_1[str1_idx] == s_2[str2_idx])
+        if(s_1[str1_idx] == s_2[str2_idx]) //相等暴力扩
         {
-            if(str2_idx == s_2.size() - 1)
+            if(str2_idx == s_2.size() - 1) //str2匹配成功直接返回
             {
                 return str1_idx - str2_idx;
             }
@@ -77,11 +72,11 @@ int KMP(string s_1, string s_2)
         else
         {
             int next_v = next[str2_idx];
-            if(next_v > 0)
+            if(next_v > 0) //有效则跳转加速
             {
                 str2_idx = next_v;
             }
-            else
+            else  //-1的情况， 则str1进入下一匹配
             {
                 str1_idx++;
             }
@@ -100,7 +95,7 @@ string AddMinChar(string s)
         return s+s;
     };
     //获取下一位置的最长前缀和后缀匹配长度
-    vector<int> next = GenerateNext(s + "a");
+    vector<int> next = GetNext(s + "a");
     int n = next.back();
     s.insert(s.end(), s.begin() + n, s.end());
     return s;

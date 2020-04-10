@@ -51,20 +51,22 @@ int Arrest(const vector<int>& coords, int D)
             break;
         };
 
-
-        if(coords[c_idx] - coords[a_idx] < D)
+        if(coords[c_idx] - coords[a_idx] < D) //弹簧还松就拉紧
         {
             total += c_idx - a_idx - 1;
             c_idx++;
         }
-        else if(coords[c_idx] - coords[a_idx] > D)
+        else if(coords[c_idx] - coords[a_idx] > D) //拉的太紧就松
         {
             a_idx++;
         }
-        else
+        else //相等弹簧收缩
         {
-            total += c_idx - a_idx - 1;
-            a_idx++;
+            while(a_idx < c_idx - 1)
+            {
+                total += c_idx - a_idx - 1;
+                a_idx++;
+            };
         }
     };
 
