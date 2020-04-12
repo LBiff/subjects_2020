@@ -4,23 +4,27 @@
 using namespace std;
 
 //将1-n个盘子从from移动到to借助help
-void HaNoI(int n, string from, string to, string help)
+void HaNoI(int n, string from, string to, string help, int& count)
 {
+    
     if(n == 1)
     {
+        count++;
         cout<< 1 << ": " << from << " => " << to << endl; 
         return;  
     }
     else
     {
-        HaNoI(n-1, from, help, to);
+        HaNoI(n-1, from, help, to, count);
+        count++;
         cout<< n << ": " << from << " => " << to << endl;
-        HaNoI(n - 1,help, to, from); 
+        HaNoI(n - 1,help, to, from, count); 
     }
 };
 
 int main()
 {
-    HaNoI(3, "from", "to", "mid");
+    int count = 0;
+    HaNoI(6, "from", "to", "mid", count);
     return 0;
 }
