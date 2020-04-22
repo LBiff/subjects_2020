@@ -1,4 +1,4 @@
-//输入处理器
+//输入输出处理器
 #include <string>
 #include <iostream>
 #include <sstream>
@@ -68,9 +68,9 @@ public:
 
 
     //输出
-    //打印数组，左右以l_flg匹配，以split_S分隔
+    //打印数组，输出左右以l_flg匹配，以split_S分隔
     template<typename T>
-    void PrintV(const vector<T> v, string l_flag = "[", string spilt_s = " ")
+    static void PrintV(const vector<T> v, string l_flag = "[", string spilt_s = " ")
     {
         cout << l_flag;
         int i = 0;
@@ -97,8 +97,7 @@ public:
 int main()
 {
    // auto ret = InOutProcessor::GetStrVByLineBySpecific(",");
-    vector<int> a(10);
-    a[7] = 9;
-    a[10] = 5;
+    vector<int> a{1,2,3,4,5,6,7,8,9,10};
+    InOutProcessor::PrintV(a,"["," ");
     return 0;
 }

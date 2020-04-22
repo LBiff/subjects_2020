@@ -10,8 +10,6 @@ void PrintStringAllRank(string s, int s_idx)
     {
         cout << s << endl;
     };
-
-
     for (int i = s_idx; i < s.length(); i++)    
     {
         string s_bak = s;

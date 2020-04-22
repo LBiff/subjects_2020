@@ -7,7 +7,7 @@ using namespace std;
 //改进：用数组
 int lengthOfLongestSubstring(string s) 
 {
-    if(s.empty())
+    if(s.empty()) 
     {
         return 0;
     }

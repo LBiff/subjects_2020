@@ -205,18 +205,16 @@ public:
             while(!node_stack.empty())
             {
                 Node* stack_top = node_stack.top();
+                cout << stack_top->_value << endl;
+
                 node_stack.pop();
                 for(auto child : stack_top->out_nodes)
                 {
                     if(node_hash.find(child) != node_hash.end())
                     {
-                        node_stack.push(stack_top);
-                        node_stack.push(stack_top);
-                        node_hash.insert(stack_top);
-                        cout << child->_value << endl;
-                        break;
+                        node_stack.push(child);
+                        node_hash.insert(child);
                     }
-
                 }
             }
         }

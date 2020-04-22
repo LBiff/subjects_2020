@@ -10,10 +10,7 @@
 #include <queue>
 using namespace std;
 
-// 1、获取数据中出现次数最多的值，把该值依次填入奇数位
-// 2、填满奇数位
-// 3、填满偶数位
-
+//按个数从多到少，先进行索引偶数再填索引奇数
 class Comparator
 {
 public:
@@ -46,7 +43,7 @@ vector<int> rearrangeBarcodes(vector<int>& barcodes)
     }; 
 
     vector<int> ret(barcodes.size());
-    //西安进行奇数位填充后偶数位
+    //先进行索引偶数再填索引奇数
     int idx = 1;
     pair<int,int> cur_pair;
     bool size_odd = ret.size() % 2 == 1; //个数是奇数
