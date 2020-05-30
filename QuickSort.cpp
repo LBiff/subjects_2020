@@ -55,9 +55,7 @@ void QuickSort(vector<int>& vec, int l, int r)
         QuickSort(vec,l, partition_v.first);
         QuickSort(vec, partition_v.second, r);
     }
-   
 };
-
 
 int main()
 {

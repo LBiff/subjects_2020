@@ -25,7 +25,7 @@
             ],
 
             "preLaunchTask": "build",
-            "miDebuggerPath": "D:/gcc/v8.1/mingw64/bin/gdb.exe"
+            "miDebuggerPath": "D:/gcc/mingw64/bin/gdb.exe"
         }
     ]
 }

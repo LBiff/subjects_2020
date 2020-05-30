@@ -17,7 +17,7 @@ public:
         unordered_set<int> set;
         ListNode* cur_node = head;
         ListNode* pre_node = nullptr;
-        while(cur_node)
+        while(cur_node) 
         {
             auto iter = set.find(cur_node->val);
             if(iter == set.end())  //找不到
@@ -36,6 +36,4 @@ public:
         };
         return head;
     };
-
-
 };
