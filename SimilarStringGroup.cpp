@@ -5,13 +5,12 @@
 using namespace std;
 
 //建立并查集，定义相似为两string不相等字符数2或0， 相似则合并，每合并一次集合-1
-class Solution 
+class Solution
 {
 public:
-    int numSimilarGroups(vector<string>& A) 
+    int numSimilarGroups(vector<string>& A)
     {
         //去除重复
-
         //各自成集合
         uf_size = A.size();
         for(auto s : A)
@@ -32,7 +31,6 @@ public:
                 }
             }
         };
-
         return uf_size;
     };
 
@@ -88,7 +86,7 @@ private:
         _re_map.insert({s, father});
         return father;
 
-    }
+    };
 
 private:
     size_t uf_size; //并查集合个数

@@ -57,7 +57,7 @@ vector<int> singleNumber_3(vector<int>& nums)
         a_xor_b ^= n;
     };
     //a_xor_b的每一位的1表示该位1位奇数
-    int diff = a_xor_b & (-a_xor_b); //将a_xor_b保留最右一位1，其余为0
+    int diff = a_xor_b & (-a_xor_b); //将a_xor_b保留最右一位1的后面的值，其余为0
     int ret = 0;
     for(auto n : nums)
     {

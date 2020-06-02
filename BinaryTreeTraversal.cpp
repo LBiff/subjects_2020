@@ -81,6 +81,7 @@ void PreOrder(const BinaryNode* root)
 }
 
 //非递归中序遍历
+//左-中-右
 //head的遍历过程
 void MidOrder(const BinaryNode* root)
 {
