@@ -3,8 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "D:/gcc/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-                "D:/gcc/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"
+                "F:/mingw/vscode_mingw/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                "F:/mingw/vscode_mingw/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"
             ],
             "defines": [
                 "_DEBUG",

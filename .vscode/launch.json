@@ -25,7 +25,7 @@
             ],
 
             "preLaunchTask": "build",
-            "miDebuggerPath": "D:/gcc/mingw64/bin/gdb.exe"
+            "miDebuggerPath": "F:/mingw/vscode_mingw/mingw64/bin/gdb.exe"
         }
     ]
 }
