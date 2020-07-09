@@ -12,6 +12,7 @@
 #include <map>
 using namespace std;
 
+
 vector<int> threeEqualParts(vector<int>& A) 
 {
     //计数1的个数
