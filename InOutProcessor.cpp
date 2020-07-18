@@ -32,24 +32,67 @@ public:
         return v;
     };
     //获取以特定字符分隔的string数组
-    static vector<string> GetStrVByLineBySpecific(string spilt_c)
+    static vector<string> GetStrVSpiltByChar(char c)
     {
         string s;
         getline(cin,s);
         vector<string> v;
-        size_t first_pos = s.find_first_of(spilt_c,0);
+        size_t first_pos = s.find_first_of(c,0);
         v.push_back(s.substr(0, first_pos));
         int pre = first_pos;
-        size_t pos =  s.find_first_of(spilt_c,pre + 1);
+        size_t pos =  s.find_first_of(c,pre + 1);
         while(pos != string::npos)
         {
             v.push_back(s.substr(pre+1, pos-pre -1));
             pre = pos;
-            pos = s.find_first_of(spilt_c,pos + 1);
+            pos = s.find_first_of(c,pos + 1);
         };
         v.push_back(s.substr(pre+1));
         return v;   
     };
+
+    //获取以特定字符分隔的int数组
+    static vector<int> GetIntVSpiltByChar(char c)
+    {
+        string s;
+        getline(cin,s);
+        vector<int> v;
+        size_t first_pos = s.find_first_of(c,0);
+        v.push_back(atoi(s.substr(0, first_pos).c_str()));
+        int pre = first_pos;
+        size_t pos =  s.find_first_of(c,pre + 1);
+        while(pos != string::npos)
+        {
+            v.push_back(atoi(s.substr(pre+1, pos-pre -1).c_str()));
+            pre = pos;
+            pos = s.find_first_of(c,pos + 1);
+        };
+        v.push_back(atoi(s.substr(pre+1).c_str()));
+        return v;   
+    };
+
+
+    //获取以特定字符串分隔的string数组
+    static vector<string> GetStrVSpecificByStr(string spilt_s)
+    {
+        int len = spilt_s.length();
+        string s;
+        getline(cin,s);
+        vector<string> v;
+        size_t first_pos = s.find_first_of(spilt_s,0);
+        v.push_back(s.substr(0, first_pos));
+        int pre = first_pos;
+        size_t pos =  s.find_first_of(spilt_s,pre + len);
+        while(pos != string::npos)
+        {
+            v.push_back(s.substr(pre+len, pos-pre -len));
+            pre = pos;
+            pos = s.find_first_of(spilt_s,pos + len);
+        };
+        v.push_back(s.substr(pre+len)); 
+        return v;   
+    };
+
 
     //获取以空格分隔的一行字符串数组
     static vector<string> GetLineStringVSpiltBySpace()
@@ -97,7 +140,8 @@ public:
 int main()
 {
    // auto ret = InOutProcessor::GetStrVByLineBySpecific(",");
-    vector<int> a{1,2,3,4,5,6,7,8,9,10};
-    InOutProcessor::PrintV(a,"["," ");
+    // vector<int> a{1,2,3,4,5,6,7,8,9,10};
+    // InOutProcessor::PrintV(a,"["," ");
+    auto ret = InOutProcessor::GetStrVSpecificByStr("--");
     return 0;
 }
