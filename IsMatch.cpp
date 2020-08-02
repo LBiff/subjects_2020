@@ -16,14 +16,17 @@ bool isMatch(string s, string p)
 {
     int a_length = s.length();
     int b_length = p.length();
+    //dp[i][j]表示s[0, i]与p[0,j]的匹配情况
     vector<vector<bool>> dp(a_length + 1,vector<bool>(b_length+ 1, false)); //00为空串，考虑空串的情况
 
     //填充第一列和第一行
     //空正则与空字符串匹配
     dp[0][0] = true;
     //空正则与非空字符串不匹配
+    //dp[i][0]直接false
+
     //空字符串与非空正则，需要正则是 a*a*a*a*的形式
-    for(int col = 1; col < b_length + 1; col ++)
+    for(int col = 1; col < b_length + 1; col++)
     {
         if(p[col - 1] == '*' && dp[0][col - 2])
         {
@@ -31,13 +34,14 @@ bool isMatch(string s, string p)
         }
     };
 
-    for(int row = 1; row < a_length + 1; row++)
+    //填充普通情况
+    for(int row = 1; row < a_length + 1; row++)  //row是s
     {
-        for(int col = 1; col < b_length + 1; col++)
+        for(int col = 1; col < b_length + 1; col++) //col是p
         {
             char s_c = s[row - 1];
             char p_c = p[col - 1];
-            if(s_c == p_c) //直接匹配
+            if(s_c == p_c) //直接继承前匹配
             {
                 dp[row][col] = dp[row - 1][col - 1];
             }

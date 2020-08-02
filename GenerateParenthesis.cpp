@@ -6,7 +6,7 @@
 #include <stack>
 using namespace std;
 
-//暴力递归
+//有效性判定
 bool is_effective(const string& str)
 {
     stack<char> s;
