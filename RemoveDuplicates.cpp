@@ -16,19 +16,17 @@ int removeDuplicates(vector<int>& nums)
     int norepeat_last_idx = 0;
     int cur_idx = 0;
     int cur_v = nums[0];
-    int ret = 1;
     while(cur_idx < nums.size())
     {
         if(nums[cur_idx] != cur_v)
         {
-            ret++;
             cur_v = nums[cur_idx];
             swap(nums[norepeat_last_idx + 1], nums[cur_idx]);
             norepeat_last_idx++;
         };
         cur_idx++;
     };
-    return ret;
+    return norepeat_last_idx + 1;
 };
 
 int main()

@@ -7,6 +7,7 @@ using namespace std;
 
 //建立next数组
 //获取待匹配字符串的next数组
+//next[i]表示以next[i -1]结尾的后缀子串与从头开始的前缀子串最长匹配长度
 vector<int> GetNext(string s_2)
 {
     vector<int> next(s_2.size());
