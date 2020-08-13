@@ -110,7 +110,7 @@ string shortestPalindrome(string s)
 
 int main()
 {
-    string s = "abbacd";
+    string s = "noo";
     auto ret = shortestPalindrome(s);
     return 0;
 };

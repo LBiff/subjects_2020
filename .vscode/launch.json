@@ -1,31 +1,27 @@
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "targetArchitecture": "x86",
-            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
+            "program": "${fileDirname}\\out\\${fileBasenameNoExtension}.exe",//修改运行的exe名称
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
+            "miDebuggerPath": "E:\\mingw\\mingw64\\bin\\gdb.exe",//修改gdb路径
+            "preLaunchTask": "g++", // 调试会话开始前执行的任务，一般为编译程序，c++为g++, c为gcc
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ],
-
-            "preLaunchTask": "build",
-            "miDebuggerPath": "F:/mingw/vscode_mingw/mingw64/bin/gdb.exe"
+            ]
         }
     ]
 }
+

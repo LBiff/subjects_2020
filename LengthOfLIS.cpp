@@ -13,32 +13,29 @@
 #include <stack>
 using namespace std;
 
-//动态规划
-//O(N^2)
-int lengthOfLIS(vector<int>& nums) 
+//动态规划O(n^2)
+//dp[i]表示以nums[i]结尾的最长子序列的长度
+int lengthOfLIS_dp(vector<int>& nums) 
 {
     if(nums.empty())
     {
         return 0;
-    };
-
-    //初始化为1，因为一个数也可以组成子序列
-    vector<int> dp(nums.size(), 1);
-    //求其左边比其小的数的dp+1
-    int max_l = 1;
-    for(int i = 1; i< nums.size(); i++)
+    }
+    vector<int> dp(nums.size(), 1); //至少包含自己
+    int max_v = 1;
+    for(int i = 1; i < nums.size(); i++)
     {
         for(int j = 0; j < i; j++)
         {
-            if(nums[j] < nums[i])
+            if(nums[i] > nums[j])
             {
-                dp[i] = max(dp[i], dp[j] + 1);
+                dp[i] = dp[j] + 1 > dp[i] ? dp[j] + 1 : dp[i];
             }
         };
-        max_l = max(max_l, dp[i]);
-    }
-    return max_l;
-};
+        max_v = max(max_v, dp[i]);
+    };
+    return max_v;
+}
 
 
 //二分O(nlgn)
@@ -51,9 +48,42 @@ int lengthOfLIS(vector<int>& nums)
 // 按照上述规则执行，可以算出最长递增子序列，牌的堆数就是最长递增子序列的长度，证明略。
 // 我们只要把处理扑克牌的过程编程写出来即可。每次处理一张扑克牌不是要找一个合适的牌堆顶来放吗，
 // 牌堆顶的牌不是有序吗，这就能用到二分查找了：用二分查找来搜索当前牌应放置的位置。
+
+int lengthOfLIS_patience_sort(vector<int>& nums) 
+{
+    if(nums.empty())
+    {
+        return 0;
+    };
+    vector<int> v; //只记录牌顶最小值
+    for(auto n : nums)
+    {
+        bool is_put = false;
+        for(int i = 0; i < v.size(); i++)
+        {
+            if(v[i] >= n)
+            {
+                v[i] = n;
+                is_put = true;
+                break;
+            }
+        };
+        if(!is_put)
+        {
+            v.push_back(n);
+        }
+    };
+    return v.size();
+};
+
+
+
+
 int main()
 {
     vector<int> v{1,3,6,7,9,4,10,5,6};
-    auto ret = lengthOfLIS(v);
+    auto ret = lengthOfLIS_dp(v);
     return 0;
 }
+
+

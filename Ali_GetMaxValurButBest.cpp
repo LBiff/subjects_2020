@@ -9,7 +9,7 @@
 using namespace std;
 
 //以空格分隔获取一行整数数组
-vector<int> GetIntVByLineBySpace()
+vector<int> GetIntVByLineBySpace()  
 {
     string s;
     string word;

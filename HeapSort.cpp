@@ -95,7 +95,6 @@ void HeapSort(vector<int>& vec)
     {
         HeapIfy(vec, j);
     }
-
 };
 
 int main()

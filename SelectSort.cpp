@@ -1,5 +1,6 @@
 //选择排序
 //每次选择后面最小的放到最前面
+//O(n^2), 空间O(1)
 
 #include <vector>
 #include <algorithm>

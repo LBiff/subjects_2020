@@ -3,15 +3,19 @@
         {
             "name": "Win32",
             "includePath": [
-                "F:/mingw/vscode_mingw/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-                "F:/mingw/vscode_mingw/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++"
+                "${workspaceFolder}/**",
+                "E://mingw//mingw64//include//*",
+                "E://mingw//mingw64//lib//gcc//x86_64-w64-mingw32//8.1.0//include//*"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "intelliSenseMode": "gcc-x64"
+            "compilerPath": "E:\\mingw\\vscode_mingw\\mingw64\\bin\\g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
         }
     ],
     "version": 4
