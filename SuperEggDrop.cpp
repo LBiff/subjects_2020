@@ -20,6 +20,7 @@ class Solution
 public:
     int superEggDrop(int K, int N) 
     {
+        //vv[i][j]表示有i个鸡蛋， j层楼的最坏情况下的鸡蛋不碎的最少扔鸡蛋次数
         vector<vector<int>> vv(K + 1, vector<int>(N + 1, -1));
         return mem_normal(K,N,vv);
     };
@@ -48,6 +49,7 @@ public:
             {
                 v[K][N - i] = mem_normal(K, N - i,v);
             }
+            //取max因为求得是最坏情况
             ret = min(ret, max(v[K - 1][i - 1], //碎了
                             v[K][N - i]) + 1); //没碎
         }
@@ -69,6 +71,7 @@ public:
 
         int ret = INT_MAX;
         //循环只是一次选择和线性扫描无关
+        //二分搜是因为dp(K - 1, i - 1) 和 dp(K, N - i)两函数组合函数分别单调，找出谷底
         int l = 1;
         int r = N;
         while(l <= r)
@@ -76,11 +79,11 @@ public:
             int mid = l + (r - l) / 2;
             if(v[K - 1][mid - 1] == -1)
             {
-                v[K - 1][mid - 1] = mem_normal(K - 1, mid - 1,v);
+                v[K - 1][mid - 1] = mem_BS(K - 1, mid - 1,v);
             };
             if(v[K][N - mid] == -1)
             {
-                v[K][N - mid] = mem_normal(K, N - mid,v);
+                v[K][N - mid] = mem_BS(K, N - mid,v);
             };
 
             if(v[K - 1][mid - 1] > v[K][N - mid])  //碎了
