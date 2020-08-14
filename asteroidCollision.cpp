@@ -10,6 +10,8 @@
 // 解释: 
 // 10 和 -5 碰撞后只剩下 10。 5 和 10 永远不会发生碰撞。
 
+
+//Warning 用栈或者队列解决
 #include <vector>
 #include <stack>
 #include <queue>

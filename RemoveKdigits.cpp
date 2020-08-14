@@ -7,9 +7,11 @@
 #include <stack>
 using namespace std;
 
+// 输入: num = "1432219", k = 3
+// 输出: "1219"
 string removeKdigits(string num, int k) 
 {
-        //保持栈内严格从底到顶递增
+    //保持栈内严格从底到顶递增
     stack<char> s;
     for(auto c : num)
     {
@@ -44,4 +46,12 @@ string removeKdigits(string num, int k)
     return ret.empty() ? "0" : ret;
 };
 
+
+int main()
+{
+    string num = "1432219";
+    int k = 3;
+    auto ret = removeKdigits(num, k);
+    return 0;
+}
 
