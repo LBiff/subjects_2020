@@ -7,5 +7,5 @@ using namespace std;
 
 int countCornerRectangles(vector<vector<int>>& grid) 
 {
-
+    
 }
