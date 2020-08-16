@@ -1,3 +1,5 @@
+// 在n个正整数中，任意挑选k个(不可重复挑选，0<=k<=n), 数字的和记为sum, 另有一个正整数m, 请问sum % m 的最大值是多少。
+
 #include <iostream>
 #include <vector>
 using namespace std;

@@ -4,6 +4,7 @@
         "iostream": "cpp",
         "sstream": "cpp",
         "string": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "unordered_map": "cpp"
     }
 }

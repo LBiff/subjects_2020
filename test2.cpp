@@ -1,63 +1,27 @@
 #include <string>
-#include <iostream>
-#include <sstream>
 #include <vector>
-#include <cstdlib>
-#include <limits>
-#include <algorithm>
+#include <unordered_map>
 using namespace std;
 
-//以空格分隔获取一行整数数组
-static vector<int> GetIntVByLineBySpace()
-{
-    string s;
-    string word;
-    vector<int> v;
-    getline(cin,s);
-    istringstream record(s);
-    while(record >> word)
-    {
-        v.push_back(atoi(word.c_str()));
-    };
-    return v;
-};
+int leaf_count = 0;
 
-//当前处理到第i个了,还没有处理
-//第i个以前没有超half的最大
-int max_v = 0;
-int GetMax(const vector<int>& v, int i, int get, int half)
+void CalCount(unordered_map<int, int> pre, unordered_map<int, int> mid, int cur_node)
 {
-  
-    if(i < v.size())
-    {
-        if(get <= half)
-        {
-            max_v = max(max_v, get);
-        }
-        GetMax(v, i + 1, get + v[i], half);
-        GetMax(v, i + 1, get, half);
-    }
-    return -1;
+    
+
 }
-
-int main()
+int GetCount(vector<int> pre, vector<int> mid)
 {
-    // int test_count = GetIntVByLineBySpace()[0];
-    // vector<vector<int>> vv;
-    // while(test_count -- > 0)
-    // {
-    //     GetIntVByLineBySpace();
-    //     vv.push_back(GetIntVByLineBySpace());
-    // };
-    // for(auto v : vv)
-    // {
-    //      GetMin(v);
-    // }
+    unordered_map<int, int> pre_map; //node,idx
+    unordered_map<int, int> mid_map;
 
-    vector<int> v{30, 60, 5, 15, 30};
-    int sum = 140;
-    int half = 70;
+    for(int i = 0; i < pre.size(); i++)
+    {
+        pre_map.insert({pre[i], i});
+        mid_map.insert({mid_map[i], i});
+    };
 
+    CalCount(pre_map, mid_map, pre[0]);
 
-    return 0;
+    return leaf_count;
 }
