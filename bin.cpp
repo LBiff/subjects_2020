@@ -95,6 +95,7 @@ void MidOrder(const BinaryNode* root)
             if(head == nullptr)  //所有的左节点入栈后弹出一个打印，head走到右节点
             {
                 uint64_t v = stack.top()->_value;
+                head = stack.top();
                 stack.pop();
                 cout << v << endl;
                 head = head->_right;

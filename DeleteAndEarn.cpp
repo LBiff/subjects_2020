@@ -9,7 +9,7 @@
 #include <cstdlib>
 using namespace std;
 
-//dp[i]表示nums的最大值
+//dp[i]表示获得的最大的点数
 //对于求出dp[i - 1]的时候，考虑dp[i]：
 // dp[i]是被动删除的：
 //      只能由dp[i - 1]被动删除，则不累加点数，有无dp[i]和dp[i - 1]是一样的

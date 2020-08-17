@@ -1,4 +1,12 @@
 //数组直方图装水问题
+// 给定一个数组,每个位置的值代表一个高度。那么整个数组可以看过是一个直方图。
+// 如果把这个直方图当做容器的话,求这个容器能装多少水。例如:
+// 3, 1, 2,4
+// 代表第一个位置高度为3,
+// 第二个位置高度为1,
+// 第三个位置高度为2,
+// 第四个位置高度为4
+// 3,1, 2,4这个数组代表的容器可以装3格的水。
 
 #include <vector>
 #include <cstdlib>
@@ -14,6 +22,7 @@ int trap(vector<int>& height)
         return 0;
     };
     
+    // 最左边和最右边是不能装水的
     auto l_iter = height.begin() + 1;  //还没处理的
     auto r_iter = height.end() - 2;
     
@@ -21,6 +30,7 @@ int trap(vector<int>& height)
     int max_l = height[0];
     
     int sum = 0;
+    // 左右夹击
     while(l_iter <= r_iter)
     {
         if(max_l > max_r) //右边是瓶颈

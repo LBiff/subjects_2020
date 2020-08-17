@@ -18,7 +18,7 @@ TreeNode* constructFromPrePost(vector<int>& pre, vector<int>& post)
     {
         return nullptr;
     };
-        //从前序中拿出根节点;
+    //从前序中拿出根节点;
     TreeNode* root = new TreeNode(pre.front());
     if(len == 1)
     {

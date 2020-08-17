@@ -18,6 +18,6 @@ void GetParas(vector<Point>& vp, Point& click_p)
     string s;
     getline(cin,s);
     size_t spilt_1 = s.find_first_of(",");
-    int row_count = s.substr(0, spilt_1);
+    // int row_count = s.substr(0, spilt_1);
 
 }

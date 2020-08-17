@@ -6,6 +6,7 @@
 using namespace std;
 
 //Thinking
+//0改-1，前缀和求解
 int countBinarySubstrings(string s) 
 {
     int count = 0;
