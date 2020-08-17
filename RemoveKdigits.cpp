@@ -49,8 +49,8 @@ string removeKdigits(string num, int k)
 
 int main()
 {
-    string num = "1432219";
-    int k = 3;
+    string num = "71245323308";
+    int k = 4;
     auto ret = removeKdigits(num, k);
     return 0;
 }
