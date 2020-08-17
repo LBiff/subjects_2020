@@ -7,6 +7,8 @@
         "queue": "cpp",
         "unordered_map": "cpp",
         "hash_map": "cpp",
-        "hash_set": "cpp"
+        "hash_set": "cpp",
+        "random": "cpp",
+        "unordered_set": "cpp"
     }
 }
