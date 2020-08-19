@@ -6,7 +6,8 @@
 #include <algorithm>
 using namespace std;
 
-int removeDuplicates(vector<int>& nums) 
+// 找到重复交换到最后，标记结束位置
+int removeDuplicates_1(vector<int>& nums) 
 {
     if(nums.empty())
     {
@@ -28,6 +29,29 @@ int removeDuplicates(vector<int>& nums)
     };
     return norepeat_last_idx + 1;
 };
+
+// 双指针法,快指针前面探路,慢指针前进将快指针找到的不同复制过来
+int removeDuplicates(vector<int>& nums)
+{
+    if(nums.size() < 2)
+    {
+        return nums.size();
+    }
+    int fast = 1;
+    int slow = 0;
+    int sz = nums.size();
+    while(fast < sz)
+    {
+        if(nums[fast] != nums[slow])
+        {
+            slow++;
+            nums[slow] = nums[fast];
+        };
+        fast++;
+    };
+    return slow + 1;
+}
+
 
 int main()
 {

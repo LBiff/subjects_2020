@@ -287,4 +287,4 @@ int main()
     string c = "abdcdvffvdcgg";
     auto b = Manacher(c);
     return 0;
-}
+};

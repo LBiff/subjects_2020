@@ -11,6 +11,11 @@ using namespace std;
 //按结束最早进行贪心
 int eraseOverlapIntervals(vector<vector<int>>& intervals) 
 {
+    if(intervals.size() < 2)
+    {
+        return 0;
+    }
+
     //结束时间升序排
     sort(intervals.begin(), intervals.end(),
     [](const vector<int>& v1, const vector<int>& v2)
@@ -18,24 +23,16 @@ int eraseOverlapIntervals(vector<vector<int>>& intervals)
         return v1[1] < v2[1] ? true :false;
     });
 
-    int del_count = 0;
-    int travl_idx = 0;
-
-    while(travl_idx < intervals.size())
+    int no_overlap_count = 1; //不相交区间的数量
+    int end = intervals[0][1];
+    for(auto i : intervals)
     {
-        if(intervals[travl_idx][0] != INT_MIN)
+        int start = i[0];
+        if(start >= end)  //找到下一个区间
         {
-            for(int i = travl_idx + 1; i < intervals.size(); i++)
-            {
-                if(intervals[i][0] < intervals[travl_idx][1] && intervals[i][0] != INT_MIN) //开始时间小于结束时间
-                {
-                    intervals[i][0] = INT_MIN; //标记删除
-                    del_count++;
-                };
-            }
-        };
-        travl_idx++;
-    };
-
-    return del_count;
+            no_overlap_count++;
+            end = i[1];
+        }
+    }
+    return intervals.size() - no_overlap_count;
 };
