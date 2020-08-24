@@ -11,6 +11,7 @@
 //稳定性分析：可实现为稳定的
 #include <vector>
 #include <algorithm>
+#include <stack>
 using namespace std;
 
 void BubbleSort(vector<int>& v)
@@ -145,7 +146,10 @@ using namespace std;
 pair<int,int> QuickSortPartition(vector<int>& v, int start, int end)
 {
     //边界
-    assert((0 <=start) && (start <= end) && (end <= v.size() - 1));
+    if(start < 0 || end > v.size() - 1 || (end < start))
+    {
+        return {-1,-1};
+    }
 
     //选取最后一个值为基准
     int flag = v[end];
@@ -171,9 +175,46 @@ pair<int,int> QuickSortPartition(vector<int>& v, int start, int end)
 
 void QuickSort(vector<int>& v, int start, int end)
 {
-    auto p_ret = QuickSortPartition(v, start, end);
-    QuickSort(v, start, p_ret.first);
-    QuickSort(v, p_ret.second, end);
+    if(start < end)  //可能出现r > l 的情况： >区间无 
+    {
+        auto p_ret = QuickSortPartition(v, start, end);
+        QuickSort(v, start, p_ret.first);
+        QuickSort(v, p_ret.second, end);
+    }
+};
+
+// 快排的非递归
+void QuickSort_NDP(vector<int>& v, int start, int end)
+{
+    if(start < 0 || end > v.size() - 1 || end < start)
+    {
+        return;
+    };
+
+    stack<pair<int,int>> stk;
+    auto p = QuickSortPartition(v, start, end);
+    if(p.first > start)
+    {
+        stk.push({start, p.first});
+    };
+    if(p.second < end)
+    {
+        stk.push({p.second, end});
+    };
+    while(!stk.empty())
+    {
+        auto top = stk.top();
+        stk.pop();
+        auto top_p = QuickSortPartition(v, top.first, top.second);
+        if(top_p.first > top.first)
+        {
+            stk.push({top.first, top_p.first});
+        };
+        if(top_p.second < top.second)
+        {
+            stk.push({top_p.second, top.second});
+        }
+    };
 }
 
 
@@ -301,7 +342,7 @@ void ShellSort(vector<int>& v)
 
 int main()
 {
-    vector<int> v{1,4,5,3,2,4,2,5,7,5,4};
-    ShellSort(v);
+    vector<int> v{};
+    QuickSort_NDP(v,0,v.size() - 1);
     return 0;
 }

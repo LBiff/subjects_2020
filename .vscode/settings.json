@@ -12,6 +12,8 @@
         "unordered_set": "cpp",
         "numeric": "cpp",
         "array": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "cmath": "cpp",
+        "deque": "cpp"
     }
 }

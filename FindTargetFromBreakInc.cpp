@@ -1,23 +1,17 @@
-//搜索旋转排序数组
-//假设按照升序排序的数组在预先未知的某个点上进行了旋转。
-//( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。
-//搜索一个给定的目标值，如果数组中存在这个目标值，则返回它的索引，否则返回 -1 。
-//你可以假设数组中不存在重复的元素。
-//你的算法时间复杂度必须是 O(log n) 级别。
-//https://leetcode-cn.com/problems/search-in-rotated-sorted-array/solution/yi-bian-er-fen-cha-zhao-c-by-biff/
-
+// 从中间折断的上升序列中查找target
+// [8,9,10,3,4,5,6]
 #include <vector>
 using namespace std;
 
-int search(vector<int>& v, int target) 
+bool Find(const vector<int>& v, int target)
 {
     if(v.empty())
     {
-        return -1;
+        return false;
     }
     else if(v.size() == 1)
     {
-        return v[0] == target ? 0 : -1;
+        return v[0] == target;
     };
     int l_idx = 0;
     int r_idx = v.size() - 1;
@@ -26,7 +20,7 @@ int search(vector<int>& v, int target)
         int mid = l_idx + (r_idx - l_idx) / 2;
         if(v[mid] == target)
         {
-            return mid;
+            return true;
         };
 
         if(v[l_idx] < v[r_idx])  //整个区间递增,正常二分
@@ -81,14 +75,12 @@ int search(vector<int>& v, int target)
         }
     };
 
-    return -1;
+    return false;
 };
-
 
 int main()
 {
-    vector<int> a{4,5,6,7,0,1,2};
-    int b = search(a, 0);
+    vector<int> v{8,9,10,3,4,5,6};
+    auto ret = Find(v, 7);
     return 0;
 }
-

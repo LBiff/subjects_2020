@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b89f3cd4-8e7a-4770-a5ce-d579840f2fcb" name="Default Changelist" comment="" />
+    <list default="true" id="b89f3cd4-8e7a-4770-a5ce-d579840f2fcb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EraseOverlapIntervals.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/EraseOverlapIntervals.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MatrixLongestIncreasingPath.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MatrixLongestIncreasingPath.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" path="D:/Golang/GoRoot" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -19,5 +25,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="532" y="235" key="FileChooserDialogImpl" timestamp="1598018456167">
+      <screen x="62" y="0" width="1378" height="960" />
+    </state>
+    <state x="532" y="235" key="FileChooserDialogImpl/62.0.1378.960@62.0.1378.960" timestamp="1598018456167" />
   </component>
 </project>

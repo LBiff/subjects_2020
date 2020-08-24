@@ -3,6 +3,9 @@
 
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <iostream>
+#include <sstream>
 using namespace std;
 
 //从坐标处开始查找得到的最长路径
@@ -70,14 +73,33 @@ int longestIncreasingPath(vector<vector<int>>& matrix)
 
 
 
+vector<int> GetIntVByLineBySpace()
+{
+    string s;
+    string word;
+    vector<int> v;
+    getline(cin,s);
+    istringstream record(s);
+    while(record >> word)
+    {
+        v.push_back(atoi(word.c_str()));
+    };
+    return v;
+};
+
+
 int main()
 {
-//  [7,6,1,1]
-//  [2,7,6,0]
-//  [1,3,5,1]
-//  [6,6,3,2]
+    auto rc = GetIntVByLineBySpace();
+    int row_count = rc[0];
+    vector<vector<int>> vv;
+    while(row_count-- > 0)
+    {
+        vv.push_back(GetIntVByLineBySpace());
+    }
 
-    vector<vector<int>> vv({{9,1,4},{6,2,8},{5,5,7}});
+    // vector<vector<int>> vv({{9,1,4},{6,2,8},{5,5,7}});
     int a = longestIncreasingPath(vv);
+    cout << a;
     return 0;
 }
