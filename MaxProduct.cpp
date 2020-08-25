@@ -1,7 +1,7 @@
 //数组中乘积最大的连续子数组
 //dp[i]记录最小最大
 //dp[i+1]_max = max(v[i+1] * dp[i]_max, v[i+1]*dp[i]_min, v[i+1]);
-//dp[i+1]_min = max(v[i+1] * dp[i]_max, v[i+1]*dp[i]_min, v[i+1]);
+//dp[i+1]_min = min(v[i+1] * dp[i]_max, v[i+1]*dp[i]_min, v[i+1]);
 #include <vector>
 #include <algorithm>
 #include <cstdlib>

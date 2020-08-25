@@ -24,4 +24,7 @@ int GetCount(vector<int> pre, vector<int> mid)
     CalCount(pre_map, mid_map, pre[0]);
 
     return leaf_count;
-}
+};
+
+
+
