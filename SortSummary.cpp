@@ -134,10 +134,19 @@ void MergeSort(vector<int>& v, int start, int end)
     v = merge_v;
 }
 
+
+int a()
+{
+    vector<int> S;
+    int* p = S.get_allocator().allocate(10);
+    S.get_allocator().deallocate(p,10);
+}
+
+
 //快排，快速排序-------------------------------------------------------------------------
 //基本思想：选取第一个数为基准，通过一次遍历将小于它的元素放到它的左侧，将大于它的元素放到它的右侧，
 //         然后对它的左右两个子序列分别递归地执行同样的操作。
-//复杂度：时间O(nlgn), 空间O(1),递归栈O(n)
+//复杂度：时间O(nlgn), 空间O(1),递归栈O(n)， 最好O(n)--在一次partition后发现没有交换则不再par
 //稳定性：不稳定
 #include <cassert>
 using namespace std;
