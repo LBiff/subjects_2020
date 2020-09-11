@@ -18,6 +18,8 @@
         "tuple": "cpp",
         "*.tcc": "cpp",
         "list": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "iosfwd": "cpp",
+        "set": "cpp"
     }
 }
