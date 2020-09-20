@@ -20,6 +20,9 @@
         "list": "cpp",
         "utility": "cpp",
         "iosfwd": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "initializer_list": "cpp",
+        "valarray": "cpp",
+        "forward_list": "cpp"
     }
 }
