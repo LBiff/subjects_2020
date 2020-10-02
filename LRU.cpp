@@ -40,7 +40,7 @@ public:
         auto iter = _map.find(key);
         if(iter != _map.end())  //查找到
         {
-            ListToFront(key);
+            MoveNodeToHead(key);
             return iter->second->_value;
         }
         else
@@ -58,7 +58,7 @@ public:
         else if(_now_capacity <= _capacity && _map.find(key) != _map.end())
         {
             UpdateValue(key,value);
-            ListToFront(key);
+            MoveNodeToHead(key);
         }
         else
         {
@@ -86,7 +86,7 @@ private:
         }
     }
     //移动到头结点
-    void ListToFront(int key)
+    void MoveNodeToHead(int key)
     {
         auto iter = _map.find(key);
         if(iter != _map.end())
