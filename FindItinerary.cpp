@@ -8,40 +8,26 @@
 #include <string>
 #include <map>
 #include <set>
+#include <unordered_map>
+#include <queue>
 using namespace std;
 //使用优先队列存储从一个机场出发可以到达的所有机场，再进行DFS找出答案
-//Thinking--图的dfs
-class Solution 
+//得用回溯，因为存在一些路径不能全部达到所有的城市
+class Solution
 {
 public:
-    vector<string> findItinerary(vector<vector<string>> &tickets) 
+    vector<string> findItinerary(vector<vector<string>>& tickets) 
     {
-        for (auto ticket : tickets)
-        {
-            targets[ticket[0]].insert(ticket[1]);
-        };
-        dfs("JFK");
-        return vector<string>(route.rbegin(), route.rend());
-    }
-    
-    void dfs(string airport) 
-    {
-        while (targets[airport].size()) 
-        {
-            string next = *targets[airport].begin();
-            targets[airport].erase(targets[airport].begin());
-            dfs(next);
-        }
-        route.push_back(airport);
+
     };
 
-    map<string, multiset<string>> targets;
-    vector<string> route;
+    
+
 };
 
 int main()
 {
-    vector<vector<string>> vv{{"JFK","SFO"},{"JFK","ATL"},{"SFO","ATL"},{"ATL","JFK"},{"ATL","SFO"}};
+    vector<vector<string>> vv{{"JFK","KUL"},{"JFK","NRT"},{"NRT","JFK"}};
     Solution s;
     auto ret = s.findItinerary(vv);
     return 0;

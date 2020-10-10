@@ -70,3 +70,37 @@ public:
         return true;
     }
 };
+
+#include <unordered_set>
+//一边遍历一边建立映射
+bool isIsomorphic(string s, string t) 
+{
+    if(s.size() != t.size())
+    {
+        return false;
+    };
+
+    unordered_map<char,char> mp; //s->t
+    unordered_set<char> st; //t的char已经被映射，防止s的两个不同的字符映射到同一个t字符
+    for(int i = 0; i < s.size(); i++)
+    {
+        auto iter = mp.find(s[i]);
+        if(iter != mp.end())
+        {
+            if(iter->second != t[i])
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if(st.find(t[i]) != st.end())
+            {
+                return false;
+            }
+            mp.insert({s[i], t[i]});
+            st.insert(t[i]);
+        }
+    };
+    return true;
+};

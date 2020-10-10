@@ -1,4 +1,4 @@
-//岛屿问题--周长
+//岛屿问题--
 // 给定一个包含 0 和 1 的二维网格地图，其中 1 表示陆地 0 表示水域。
 // 网格中的格子水平和垂直方向相连（对角线方向不相连）。整个网格被水完全包围，
 // 但其中恰好有一个岛屿（或者说，一个或多个表示陆地的格子相连组成的岛屿）。
@@ -8,33 +8,35 @@ using namespace std;
 
 //1.岛屿的周长
 //如果一个单元岛上下左右哪一边没有岛则贡献那一条边，遍历求解
-int islandPerimeter(vector<vector<int>>& grid)
-{
-    int ret = 0;
-    for(int row =0; row < grid.size(); row++)
+ int islandPerimeter(vector<vector<int>>& grid) 
     {
-        for(int col = 0; col < grid[0].size(); col++)
+        int ret = 0;
+        vector<vector<int>> vv{{-1, 0}, {1,0}, {0, -1}, {0, 1}};
+        for(int i = 0; i < grid.size(); i++)
         {
-            if(grid[row][col] == 1)
+            for(int j = 0; j < grid[0].size();j++)
             {
-                //上
-                ret = ((row > 0 && grid[row - 1][col] != 1) || row == 0) 
-                      ? ret + 1
-                      : ret;
-                //下
-                ret = ((row < grid.size() - 1 && grid[row + 1][col] != 1) || row == grid.size() - 1)
-                      ? ret + 1 
-                      : ret;
-                //左
-                ret = ((col > 0 && grid[row][col - 1] != 1) || col == 0)
-                      ? ret + 1 
-                      : ret;
-                //右
-                ret = ((col < (grid[0].size() - 1) && grid[row][col + 1] != 1) || col == grid[0].size() - 1)
-                      ? ret + 1 
-                      : ret;
+                if(grid[i][j] == 1) //只有是岛屿才统计
+                {
+                    for(auto xy : vv)
+                    {
+                        int x_idx = i + xy[0];
+                        int y_idx = j + xy[1];
+                        if(x_idx >= 0 && x_idx < grid.size() && y_idx >= 0 && y_idx < grid[0].size())
+                        {
+                            if(grid[x_idx][y_idx] == 0)
+                            {
+                                ret++;
+                            }
+                        }
+                        else //如果越界还是要统计一条边
+                        {
+                             ret++;
+                        }
+                    }
+                }
+
             }
         };
-    };
-    return ret;
-};
+        return ret;
+    }

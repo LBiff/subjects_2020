@@ -102,7 +102,7 @@ void MidOrder(const BinaryNode* root)
             }
             else  //节点不为空，压其所有的左节点
             {
-                stack.push(head->_left);
+                stack.push(head);
                 head = head->_left;
             }
         }
