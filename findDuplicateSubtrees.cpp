@@ -23,7 +23,7 @@ using namespace std;
 // 节点node的id=(node->val, node->left.id, node-> right.id)
 //创建一颗树各节点的id
 string CreateNodesId(TreeNode* root, unordered_map<TreeNode*, string>& id_mp, unordered_map<string, TreeNode*>& diff_ids, 
-                     unordered_map<string, TreeNode*>& & same_ret)
+                     unordered_map<string, TreeNode*>& same_ret)
 {
     if(!root)
     {
@@ -39,9 +39,9 @@ string CreateNodesId(TreeNode* root, unordered_map<TreeNode*, string>& id_mp, un
     {
         ret_s += to_string(root -> val);
         ret_s += "_";
-        ret_s += CreateNodesId(root->left, id_mp, diff_ids, ret);
+        ret_s += CreateNodesId(root->left, id_mp, diff_ids, same_ret);
         ret_s += "_";
-        ret_s += CreateNodesId(root->right, id_mp, diff_ids, ret);
+        ret_s += CreateNodesId(root->right, id_mp, diff_ids, same_ret);
     };
 
     auto iter_diff = diff_ids.find(ret_s);
@@ -53,7 +53,7 @@ string CreateNodesId(TreeNode* root, unordered_map<TreeNode*, string>& id_mp, un
     {
         if(ret_s != "NULL" && same_ret.find(ret_s) == same_ret.end())
         {
-            same_ret.push_back({ret_s, root});
+            same_ret.insert({ret_s, root});
         }
     };
     return ret_s;
@@ -62,12 +62,12 @@ vector<TreeNode*> findDuplicateSubtrees(TreeNode* root)
 {
     unordered_map<TreeNode*, string> id_mp;
     unordered_map<string, TreeNode*> diff_ids; 
-    unordered_map<string, TreeNode*>& & same_ret;
+    unordered_map<string, TreeNode*> same_ret;
     vector<TreeNode*> ret;
     CreateNodesId(root, id_mp, diff_ids, same_ret);
-    for(auto iter = same_ret.begin(); iter != same_end.end(); iter++)
+    for(auto iter = same_ret.begin(); iter != same_ret.end(); iter++)
     {
-        ret.push(iter->second);
+        ret.push_back(iter->second);
     }
     return ret;
 };
