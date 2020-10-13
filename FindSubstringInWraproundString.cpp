@@ -10,39 +10,25 @@ using namespace std;
 
 //判断连续子串
 //无必要代码
-// int findSubstringInWraproundString(string p) 
-// {
-//     auto GetChar = [](const char c) ->char
-//     {
-//         if(c == 'z')
-//         {
-//             return 'a';
-//         };
-//         return static_cast<char>(c + 1);
-//     };
-
-//     unordered_set<string> set;
-//     //从长到短判定
-//     int s = 0;
-//     int e = p.size() - 1;
-//     int ret;
-//     while(s <= e)
-//     {
-//         string tmp;
-//         //判断当前形成的子串
-//         bool is_effective = true;
-//         for(int i = s; i < e; i++)
-//         {
-//             if(GetChar(p[i]) != p[i + 1])
-//             {
-//                 is_effective = false;
-//                 break;
-//             }
-//         };
-//         if(is_effective)
-//         {
-//             ret += 
-//         }
-        
-//     }
-// }
+int findSubstringInWraproundString(string p) 
+{
+    if(p.size() < 2)
+    {
+        return p.size();
+    };
+   unordered_set<string> st;
+   int pre_idx = 0; //连续字符的第一个字符
+   for(int i = 1; i < p.size(); i++)
+   {
+       char next_c = p[i - 1] == 'z' ? 'a' : p[i - 1] + 1;
+       if(p[i] != next_c)
+       {
+           int total_len = i - pre_idx;
+           int cur_len = total_len;
+           while(cur_len > 0)
+           {
+            //    for(int start = pre_idx; start < )
+           };
+       }
+   }
+}

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b89f3cd4-8e7a-4770-a5ce-d579840f2fcb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/SortSummary.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SortSummary.exe.stackdump" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FindSubstringInWraproundString.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/FindSubstringInWraproundString.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

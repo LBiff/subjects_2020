@@ -23,6 +23,7 @@
         "set": "cpp",
         "initializer_list": "cpp",
         "valarray": "cpp",
-        "forward_list": "cpp"
+        "forward_list": "cpp",
+        "limits": "cpp"
     }
 }

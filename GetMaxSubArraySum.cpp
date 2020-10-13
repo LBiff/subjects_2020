@@ -3,6 +3,8 @@
 #include <cstdint>
 using namespace std;
 
+//ERROR
+
 int GetMaxSubArraySum(vector<int> v)
 {
     int arr_sum = 0;
