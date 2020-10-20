@@ -7,10 +7,16 @@
 #include <string>
 #include <cstdlib>
 #include <cmath>
+#include <algorithm>
 using namespace std;
 
-int nextGreaterElement(int n) 
+int nextGreaterElement(unsigned int n) 
 {
+    if(n / 10 == 0)
+    {
+        return -1;
+    }
+
     //查找第一个逆序对
     string s = to_string(n);
     char back = s.back();
@@ -31,13 +37,11 @@ int nextGreaterElement(int n)
     };
 
     //从后往前查找第一个比其刚好大的
-    int diff = INT_MAX; //正差值
     int greater_idx = idx;
-    for(int i = s.size() + 1; i > idx; i--)
+    for(int i = s.size() - 1; i > idx; i--)
     {
-        if(s[i] > s[idx] && (s[i] - s[idx]) < diff)
+        if(s[i] > s[idx])
         {
-            diff = s[i] - s[idx];
             greater_idx = i;
         }
     };
@@ -46,12 +50,8 @@ int nextGreaterElement(int n)
     swap(s[idx], s[greater_idx]);
 
     //将idx后进行反序
-    int l_idx = idx + 1;
-    int r_idx = s.size() - 1;
-    while(l_idx < r_idx)
-    {
-        swap(s[l_idx++], s[r_idx--]);
-    };
+    sort(s.begin() + idx + 1, s.end());
+    
 
     //溢出检查
     string tmp = s.substr(1);

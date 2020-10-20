@@ -39,4 +39,5 @@ int longestStrChain(vector<string>& words)
     };
 
     return max_v;
-}
+};
+
