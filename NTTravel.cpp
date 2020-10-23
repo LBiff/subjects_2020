@@ -45,6 +45,5 @@ vector<int> preorder(Node* root)
             }
         }
     };
-
     return ret;
 }
